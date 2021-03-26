@@ -2,6 +2,7 @@ package com.example.tmnn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         btnDatHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tag = "";
+                /*String tag = "";
                 IDMonAn = new String[10];
                 int k = 0;
                 for (int i = 0; i<items.length; i++)
@@ -49,7 +50,17 @@ public class MainActivity extends AppCompatActivity {
                         tag = tag + i + "";
                         IDMonAn[k++] = String.valueOf(i);
                     }
+                }*/
+                String Mon="";
+                Intent intent = new Intent(getApplicationContext(), DatMonActivity.class);
+                for (int i = 0; i<items.length; i++)
+                {
+                    if (items[i].isSelected()) {
+                        Mon+=items[i].getFoodName()+", ";
+                    }
                 }
+                intent.putExtra("Mon",Mon);
+                startActivity(intent);
             }
         });
 
